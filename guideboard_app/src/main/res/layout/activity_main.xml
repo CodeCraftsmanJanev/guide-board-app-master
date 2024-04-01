@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity">
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/tv_line_name"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="end|center_vertical"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="180sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_arrow"
+            app:layout_constraintEnd_toStartOf="@+id/iv_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_arrow" />
+
+        <com.marquee.dingrui.marqueeviewlib.MarqueeView
+            android:id="@+id/mv_end_site"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_arrow"
+            app:layout_constraintTop_toTopOf="@+id/iv_arrow"
+            app:marqueeview_repet_type="repet_continuous"
+            app:marqueeview_text_size="130"
+            app:marqueeview_text_speed="2"
+            app:marqueeview_text_distance="300"
+            app:marqueeview_text_color="@android:color/holo_orange_light"
+            app:marqueeview_is_resetLocation="true"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_end_site"
+            android:textSize="130sp"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/holo_orange_light"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_arrow"
+            app:layout_constraintTop_toTopOf="@+id/iv_arrow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="60sp"
+            android:letterSpacing="0.1"
+            app:layout_constraintBottom_toTopOf="@+id/v_divider"
+            app:layout_constraintEnd_toEndOf="@+id/v_divider"
+            app:layout_constraintStart_toStartOf="@+id/v_divider"
+            app:layout_constraintTop_toBottomOf="@+id/iv_arrow" />
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_blue_bright"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tips" />
+
+        <TextView
+            android:id="@+id/tv_site_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:letterSpacing="0.05"
+            android:paddingStart="20dp"
+            android:text="途经:"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="80sp" />
+
+        <com.marquee.dingrui.marqueeviewlib.MarqueeView
+            android:id="@+id/tv_site_list"
+            app:layout_constraintStart_toEndOf="@+id/tv_site_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_divider"
+            app:marqueeview_repet_type="repet_continuous"
+            app:marqueeview_text_size="80"
+            app:marqueeview_text_speed="2"
+            app:marqueeview_text_distance="300"
+            app:marqueeview_text_color="@android:color/holo_red_light"
+            app:marqueeview_is_resetLocation="true"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <FrameLayout
+            android:id="@+id/fl_init_container"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <FrameLayout
+            android:id="@+id/fl_menu_container"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <FrameLayout
+            android:id="@+id/fl_click"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btn_test"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="测试"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:visibility="gone"
+            android:text="日志收集"
+            android:id="@+id/btn_test1"
+            app:layout_constraintTop_toBottomOf="@+id/btn_test"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

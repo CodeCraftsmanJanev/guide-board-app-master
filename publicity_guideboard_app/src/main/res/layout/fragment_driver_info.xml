@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/dp_16"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextClock
+            android:id="@+id/tv_clock"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_72"
+            android:textColor="@color/black"
+            android:format12Hour="HH:mm"
+            android:format24Hour="HH:mm"
+            android:text="14:39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextClock
+            android:id="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_clock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_week"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:format12Hour="yyyy年MM月dd日 EEEE aa"
+            android:format24Hour="yyyy年MM月dd日 EEEE aa"
+            android:text="2022年07月20日 星期三 上午"
+            android:textSize="@dimen/sp_36"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@mipmap/icon_no_head"
+            android:id="@+id/iv_head"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_name_label"
+            app:layout_constraintStart_toStartOf="@+id/iv_head"
+            app:layout_constraintTop_toTopOf="@+id/edt_name"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_name"
+            android:text="姓名："
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_36"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:textSize="@dimen/sp_40"
+            android:id="@+id/edt_name"
+            android:enabled="false"
+            android:textColor="@color/black"
+            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintTop_toBottomOf="@+id/iv_head"
+            app:layout_constraintStart_toEndOf="@+id/tv_name_label"
+            app:layout_constraintEnd_toEndOf="@+id/iv_head"
+            app:layout_constraintBottom_toTopOf="@+id/edt_number"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_number_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_label"
+            app:layout_constraintTop_toTopOf="@+id/edt_number"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_number"
+            app:layout_constraintEnd_toStartOf="@+id/edt_number"
+            android:text="工号："
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_36"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:textSize="@dimen/sp_40"
+            android:id="@+id/edt_number"
+            android:enabled="false"
+            android:textColor="@color/black"
+            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintTop_toBottomOf="@+id/edt_name"
+            app:layout_constraintStart_toStartOf="@+id/edt_name"
+            app:layout_constraintEnd_toEndOf="@+id/edt_name"
+            app:layout_constraintBottom_toTopOf="@+id/rb_star"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_star_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_label"
+            app:layout_constraintTop_toTopOf="@+id/rb_star"
+            app:layout_constraintBottom_toBottomOf="@+id/rb_star"
+            app:layout_constraintEnd_toStartOf="@+id/rb_star"
+            android:text="星级："
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RatingBar
+            android:stepSize="1"
+            android:numStars="5"
+            android:rating="0"
+            android:id="@+id/rb_star"
+            android:progressTint="#ff0000"
+            app:layout_constraintTop_toBottomOf="@+id/edt_number"
+            app:layout_constraintStart_toStartOf="@+id/edt_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_phone"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/tv_phone"
+            android:textSize="@dimen/sp_36"
+            app:layout_constraintTop_toBottomOf="@+id/tv_star_label"
+            app:layout_constraintStart_toStartOf="@+id/tv_star_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="值班电话："
+            app:layout_constraintHeight_percent="0.08"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+        <ProgressBar
+            app:layout_constraintTop_toTopOf="@+id/iv_head"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_head"
+            app:layout_constraintStart_toStartOf="@+id/iv_head"
+            app:layout_constraintEnd_toEndOf="@+id/iv_head"
+            android:elevation="@dimen/dp_10"
+            android:id="@+id/pb_loading"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            app:layout_constraintWidth_percent="0.5"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

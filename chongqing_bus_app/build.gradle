@@ -1,0 +1,149 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.janev.chongqing_bus_app"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "2.4." + getMyAppVersionCode()
+
+        multiDexEnabled true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    signingConfigs {
+        release {
+            keyAlias 'hsd'
+            keyPassword 'tyiyun.com'
+            storePassword 'tyiyun.com'
+            storeFile file('puskey')
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures{
+        dataBinding true
+    }
+    //greenDao配置信息
+    greendao {
+        schemaVersion 11//<--数据库的版本，用于升级时候进行更改
+//        daoPackage 'com.yunbiao.app_buspad.data'
+    }
+    //APK输出配置
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (variant.buildType.name == "debug") {
+//                outputFileName = "报站牌_重庆公交协议v" + defaultConfig.versionName + "_debug_" + buildTime() + ".apk"
+                outputFileName = "appv" + defaultConfig.versionName + "_debug_" + buildTime() + ".apk"
+            } else {
+//                outputFileName = "报站牌_重庆公交协议v" + defaultConfig.versionName + "_" + buildTime() + ".apk"
+                outputFileName = "appv" + defaultConfig.versionName + "_" + buildTime() + ".apk"
+            }
+        }
+    }
+}
+
+def buildTime() {
+    //yy年 MM月 dd日 HH小时 mm分钟 ss秒
+    return new Date().format('yyyyMMddHHmm')
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+
+    implementation 'com.blankj:utilcodex:1.30.6'
+
+    implementation 'tp.xmaihh:serialport:2.1'
+
+    //mmkv
+    implementation 'com.tencent:mmkv-static:1.2.7'
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation files('libs\\smdt.jar')
+    implementation files('libs\\ftp4j-1.7.2.jar')
+    implementation files('libs\\commons-net-3.6.jar')
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    //okgo
+    implementation 'com.lzy.net:okgo:3.0.4'
+    implementation 'com.lzy.net:okrx2:2.0.2'
+    implementation 'com.lzy.net:okserver:2.0.5'
+    //multiDex
+    implementation 'androidx.multidex:multidex:2.0.1'
+    //fastjson
+    implementation 'com.alibaba:fastjson:1.2.76'
+
+    implementation 'com.sprylab.android.texturevideoview:texturevideoview:1.2.1'
+
+    implementation 'org.greenrobot:greendao:3.3.0' // add library
+    implementation 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.4.0'
+
+    implementation 'com.tonystark.android:socket:4.2.3'
+
+    implementation 'io.github.anylifezlb:ScrollTextView:2.0.0'
+
+//    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
+//    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
+//    implementation 'io.reactivex:rxnetty-http:0.5.3'
+}
+
+task updateVersionCode(){
+    doFirst{
+        // 获取 gradle.properties 文件
+        def gradleProperties = file('../version.properties')
+        // 读取里面的键值对
+        def properties = new Properties()
+        properties.load(new FileInputStream(gradleProperties))
+        // 获取里面的 CHONGQING_APP_VERSION_CODE 进行 +1
+        def codeBumped = properties['CHONGQING_APP_VERSION_CODE'].toInteger() + 1
+        // 重新赋值
+        properties['CHONGQING_APP_VERSION_CODE'] = codeBumped.toString()
+        // 写入
+        properties.store(gradleProperties.newWriter(), null)
+    }
+}
+
+project.tasks.whenTaskAdded { Task theTask ->
+    if (theTask.name == 'assembleRelease') {
+        theTask.dependsOn(updateVersionCode)
+        theTask.mustRunAfter(updateVersionCode)				// updateVersionCode在assembleRelease之前执行
+    }
+}
+
+def getMyAppVersionCode() {  //获取APP版本号
+    def gradleProperties = file('../version.properties')
+    def properties = new Properties()
+    properties.load(new FileInputStream(gradleProperties))
+    def codeBumped = properties['CHONGQING_APP_VERSION_CODE'].toInteger() + 1
+    return codeBumped as int
+}

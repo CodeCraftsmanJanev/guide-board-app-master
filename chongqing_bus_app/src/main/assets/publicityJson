@@ -1,0 +1,136 @@
+{
+    "id": 12312432423,
+    "version": "89763",
+    "programList": [
+        {
+            "id": "1",
+            "name": "广告节目单 1",
+            "state": 0,
+            "priority": 0,
+            "startDate": "2022-01-01",
+            "endDate": "2022-12-31",
+            "materialList": [
+                {
+                    "id": "1232433343545423423423",
+                    "materialType": 1,
+                    "name": "广告素材 1.mp4",
+                    "size": "6488066",
+                    "md5": "1c88232454c67e909fc402e529597d04",
+                    "url": "ftp://192.168.1.1:5000/1c88232454c67e909fc402e529597d04.zip",
+                    "order": 0,
+                    "totalTimes": 20,
+                    "totalDuration": 600,
+                    "timeList": [
+                        {
+                            "startTime": "09:30:00",
+                            "endTime": "11:59:59",
+                            "repeatTimes": 2,
+                            "duration": 0,
+                            "totalTimes": 10,
+                            "totalDuration": 300
+                        },
+                        {
+                            "startTime": "18:00:00",
+                            "endTime": "20:59:59",
+                            "repeatTimes": 0,
+                            "duration": 0,
+                            "totalTimes": 10,
+                            "totalDuration": 300
+                        }
+                    ]
+                },
+                {
+                    "id": "1232433343545423423425",
+                    "materialType": 2,
+                    "name": "广告素材 2.jpg",
+                    "size": "190602",
+                    "md5": "ab82feb50f64bff01a930061b228ee5f",
+                    "url": "ftp://192.168.1.1:5000/ab82feb50f64bff01a930061b228ee5f.jpg",
+                    "order": 1,
+                    "timeList": [
+                        {
+                            "startTime": "09:30:00",
+                            "endTime": "11:59:59",
+                            "repeatTimes": 0,
+                            "duration": 20,
+                            "totalTimes": 10,
+                            "totalDuration": 200
+                        },
+                        {
+                            "startTime": "18:00:00",
+                            "endTime": "20.59.59",
+                            "repeatTimes": 0,
+                            "duration": 20,
+                            "totalTimes": 10,
+                            "totalDuration": 200
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "广告节目单 2",
+            "state": 0,
+            "priority": 0,
+            "startDate": "2020-01-01",
+            "endDate": "2020-06-30",
+            "materialList": [
+                {
+                    "id": "1232433343545423423428",
+                    "materialType": 1,
+                    "name": "广告素材 3.mp4",
+                    "size": "6488066",
+                    "md5": "1c88232454c67e909fc402e529597d04",
+                    "url": "ftp://192.168.1.1:5000/1c88232454c67e909fc402e529597d04.zip",
+                    "order": 0,
+                    "timeList": [
+                        {
+                            "startTime": "09:30:00",
+                            "endTime": "11:59:59",
+                            "repeatTimes": 2,
+                            "duration": 0,
+                            "totalTimes": 10,
+                            "totalDuration": 300
+                        },
+                        {
+                            "startTime": "18:00:00",
+                            "endTime": "20:59:59",
+                            "repeatTimes": 0,
+                            "duration": 0,
+                            "totalTimes": 10,
+                            "totalDuration": 300
+                        }
+                    ]
+                },
+                {
+                    "id": "1232433343545423423429",
+                    "materialType": 2,
+                    "name": "广告素材 4.jpg",
+                    "size": "190602",
+                    "md5": "ab82feb50f64bff01a930061b228ee5f",
+                    "url": "ftp://192.168.1.1:5000/ab82feb50f64bff01a930061b228ee5f.jpg",
+                    "order": 1,
+                    "timeList": [
+                        {
+                            "startTime": "09:30:00",
+                            "endTime": "11:59:59",
+                            "repeatTimes": 0,
+                            "duration": 20,
+                            "totalTimes": 10,
+                            "totalDuration": 200
+                        },
+                        {
+                            "startTime": "18:00:00",
+                            "endTime": "20.59.59",
+                            "repeatTimes": 0,
+                            "duration": 20,
+                            "totalTimes": 10,
+                            "totalDuration": 200
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

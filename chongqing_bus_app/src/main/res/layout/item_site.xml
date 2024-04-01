@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="site"
+            type="com.janev.chongqing_bus_app.adapter.SiteListAdapter.Site" />
+        <import type="com.janev.chongqing_bus_app.adapter.SiteListAdapter.Site"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/v_line_left"
+            android:background="@{site.leftLineResId}"
+            app:layout_constraintTop_toTopOf="@+id/iv_dot"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_dot"
+            app:layout_constraintEnd_toStartOf="@+id/v_line_right"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"/>
+        <ImageView
+            android:visibility="gone"
+            android:scaleType="fitStart"
+            android:src="@mipmap/icon_left_arrow"
+            android:id="@+id/iv_left_arrow"
+            app:layout_constraintTop_toTopOf="@+id/v_line_left"
+            app:layout_constraintBottom_toBottomOf="@+id/v_line_left"
+            app:layout_constraintStart_toStartOf="@+id/v_line_left"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+        <View
+            android:id="@+id/v_line_right"
+            android:background="@{site.rightLineResId}"
+            app:layout_constraintTop_toTopOf="@+id/iv_dot"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_dot"
+            app:layout_constraintStart_toEndOf="@+id/v_line_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"/>
+
+        <ImageView
+            android:visibility="gone"
+            android:scaleType="fitEnd"
+            android:src="@mipmap/icon_right_arrow"
+            android:id="@+id/iv_right_arrow"
+            app:layout_constraintTop_toTopOf="@+id/v_line_right"
+            app:layout_constraintBottom_toBottomOf="@+id/v_line_right"
+            app:layout_constraintEnd_toEndOf="@+id/v_line_right"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+        <com.janev.chongqing_bus_app.view.ArrowAnimationView
+            android:visibility="@{site.showAnim ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toTopOf="@+id/iv_dot"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_dot"
+            app:layout_constraintEnd_toStartOf="@+id/iv_dot"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <ImageView
+            android:id="@+id/iv_dot"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@{site.dotResId}"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"/>
+
+        <com.janev.chongqing_bus_app.view.TextViewVertical
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/tv_site_name"
+            app:v_start="left"
+            app:v_text_column_count="10"
+            app:v_textHorizontalMargin="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@+id/iv_dot"
+            app:layout_constraintStart_toStartOf="@+id/iv_dot"
+            app:layout_constraintEnd_toEndOf="@+id/iv_dot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:v_text=" "
+            app:v_textSize="@dimen/sp_30"
+            app:v_textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+        <!--app:v_textSize="@{site.status == Site.ARRIVAL?@dimen/sp_40:@dimen/sp_30}"
+        app:v_textColor="@{site.status == Site.BEFORE?@android:color/darker_gray:@color/black}"
+-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

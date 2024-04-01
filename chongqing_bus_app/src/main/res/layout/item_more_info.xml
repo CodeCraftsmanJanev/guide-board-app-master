@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="moreInfo"
+            type="com.janev.chongqing_bus_app.adapter.MoreInfoAdapter.MoreInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@{moreInfo.title}"
+            android:id="@+id/tv_title"
+            android:textSize="@dimen/sp_26"
+            android:layout_width="0dp"
+            android:gravity="end|center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            android:layout_height="wrap_content"/>
+
+        <HorizontalScrollView
+            android:layout_marginStart="@dimen/dp_10"
+            app:layout_constraintTop_toTopOf="@+id/tv_title"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintStart_toEndOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <TextView
+                android:textColor="@color/black"
+                android:text="@{moreInfo.content}"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/sp_26"
+                android:id="@+id/tv_content"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </HorizontalScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

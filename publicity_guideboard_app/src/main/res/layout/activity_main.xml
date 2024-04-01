@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity">
+
+        <FrameLayout
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fl_publicity"
+            android:id="@+id/fl_driver_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/fl_publicity"
+            app:layout_constraintWidth_percent="0.563"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fl_publicity"
+            android:id="@+id/fl_guide_board"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/fl_setting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <FrameLayout
+            android:id="@+id/fl_download_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <FrameLayout
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintHeight_percent="0.2"
+            android:id="@+id/fl_right_top"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <FrameLayout
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintHeight_percent="0.2"
+            android:id="@+id/fl_right_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <Button
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/btn_list"
+            android:text="站点列表"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:visibility="gone"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toTopOf="@+id/btn_list"
+            app:layout_constraintStart_toEndOf="@+id/btn_list"
+            android:id="@+id/btn_next"
+            android:text="下一站"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:visibility="gone"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toTopOf="@+id/btn_next"
+            app:layout_constraintStart_toEndOf="@+id/btn_next"
+            android:id="@+id/btn_info"
+            android:text="线路信息"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:gravity="center"
+            android:textSize="@dimen/sp_58"
+            android:textColor="@color/white"
+            android:id="@+id/tv_line_name"
+            android:background="@color/bg_color_pink"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cl_start_end"
+            app:layout_constraintWidth_min="wrap"
+            app:layout_constraintWidth_percent="0.13"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_start_end"
+            android:background="@color/bg_color_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_line_name"
+            app:layout_constraintEnd_toStartOf="@+id/tv_next_site"
+            app:layout_constraintWidth_percent="0.52"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:gravity="center"
+                android:textSize="@dimen/sp_30"
+                android:textColor="@color/white"
+                android:id="@+id/tv_start_site"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_arrow"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:scaleY="-1"
+                android:src="@mipmap/icon_arrow_right"
+                android:id="@+id/iv_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_percent="0.1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="@dimen/sp_30"
+                android:textColor="@color/white"
+                android:id="@+id/tv_end_site"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:gravity="center"
+            android:textSize="@dimen/sp_30"
+            android:textColor="@color/text_color_blue"
+            android:id="@+id/tv_next_site"
+            android:background="@color/bg_color_silver"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cl_start_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

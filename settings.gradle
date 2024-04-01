@@ -1,0 +1,3 @@
+include ':guideboard_app'
+include ':publicity_guideboard_app'
+include ':chongqing_bus_app'

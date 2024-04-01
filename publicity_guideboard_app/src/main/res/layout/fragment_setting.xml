@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#75000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="@dimen/dp_20"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.4"
+            app:layout_constraintHeight_percent="0.6"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/sp_36"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    app:layout_constraintHorizontal_bias="0.6"
+                    app:layout_constraintWidth_percent="0.55"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/edt_password"
+                    android:id="@+id/edt_user_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_background"
+                    android:padding="@dimen/dp_10"
+                    android:textSize="@dimen/sp_30"
+                    android:singleLine="true"
+                    android:ellipsize="middle"
+                    android:textColor="@color/black" />
+                <ImageView
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    app:layout_constraintTop_toTopOf="@+id/edt_user_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_user_name"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_user_name"
+                    android:id="@+id/iv_clear_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:src="@mipmap/icon_close"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_30"
+                    android:text="账号："
+                    app:layout_constraintTop_toTopOf="@+id/edt_user_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_user_name"
+                    app:layout_constraintEnd_toStartOf="@+id/edt_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    app:layout_constraintTop_toBottomOf="@+id/edt_user_name"
+                    app:layout_constraintStart_toStartOf="@+id/edt_user_name"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_user_name"
+                    app:layout_constraintBottom_toTopOf="@+id/edt_bus_code"
+                    android:id="@+id/edt_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_background"
+                    android:padding="@dimen/dp_10"
+                    android:textSize="@dimen/sp_30"
+                    android:singleLine="true"
+                    android:ellipsize="middle"
+                    android:textColor="@color/black" />
+                <ImageView
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    app:layout_constraintTop_toTopOf="@+id/edt_password"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_password"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_password"
+                    android:id="@+id/iv_clear_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:src="@mipmap/icon_close"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_30"
+                    android:text="密钥："
+                    app:layout_constraintTop_toTopOf="@+id/edt_password"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_password"
+                    app:layout_constraintEnd_toStartOf="@+id/edt_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+               <EditText
+                    app:layout_constraintTop_toBottomOf="@+id/edt_password"
+                    app:layout_constraintStart_toStartOf="@+id/edt_user_name"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_user_name"
+                    app:layout_constraintBottom_toTopOf="@+id/sp_image_time"
+                    android:id="@+id/edt_bus_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_background"
+                    android:padding="@dimen/dp_10"
+                    android:textSize="@dimen/sp_30"
+                    android:singleLine="true"
+                    android:ellipsize="middle"
+                    android:textColor="@color/black" />
+                <ImageView
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    app:layout_constraintTop_toTopOf="@+id/edt_bus_code"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_bus_code"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_bus_code"
+                    android:id="@+id/iv_clear_bus_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:src="@mipmap/icon_close"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_30"
+                    android:text="车号："
+                    app:layout_constraintTop_toTopOf="@+id/edt_bus_code"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_bus_code"
+                    app:layout_constraintEnd_toStartOf="@+id/edt_bus_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/sp_image_time"
+                    android:background="@drawable/input_background"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_bus_code"
+                    app:layout_constraintStart_toStartOf="@+id/edt_user_name"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_user_name"
+                    app:layout_constraintBottom_toTopOf="@+id/sw_log"
+                    android:layout_width="0dp"
+                    app:layout_constraintHeight_percent="0.12"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_30"
+                    android:text="播放间隔："
+                    app:layout_constraintTop_toTopOf="@+id/sp_image_time"
+                    app:layout_constraintBottom_toBottomOf="@+id/sp_image_time"
+                    app:layout_constraintEnd_toStartOf="@+id/sp_image_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Switch
+                    android:id="@+id/sw_log"
+                    app:layout_constraintHeight_percent="0.1"
+                    app:layout_constraintStart_toStartOf="@+id/edt_user_name"
+                    app:layout_constraintTop_toBottomOf="@+id/sp_image_time"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_30"
+                    android:text="收集日志："
+                    app:layout_constraintTop_toTopOf="@+id/sw_log"
+                    app:layout_constraintBottom_toBottomOf="@+id/sw_log"
+                    app:layout_constraintEnd_toStartOf="@+id/sw_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    app:layout_constraintVertical_bias="0.95"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="确 定"
+                    android:textSize="28sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_cheak"
+                    android:paddingRight="@dimen/sp_30"
+                    android:paddingLeft="@dimen/sp_30"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

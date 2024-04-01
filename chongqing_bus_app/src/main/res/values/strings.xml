@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">报站牌</string>
+
+    <integer-array name="image_time">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+    </integer-array>
+</resources>

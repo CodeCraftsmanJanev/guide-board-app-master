@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            app:layout_constraintVertical_chainStyle="packed"
+            android:id="@+id/tv_label"
+            android:textStyle="bold"
+            android:textColor="@color/color_ui"
+            android:textSize="@dimen/sp_32"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/v_line"
+            android:text="本站到达"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:id="@+id/v_line"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_site_name"
+            app:layout_constraintWidth_percent="0.35"
+            android:background="@color/color_ui"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            app:layout_constraintTop_toBottomOf="@+id/v_line"
+            app:layout_constraintBottom_toTopOf="@+id/cl_next_site"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/tv_site_name"
+            android:textColor="@color/color_ui"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_64"
+            android:text="松树桥"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_next_site"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingStart="@dimen/dp_60"
+            android:paddingEnd="@dimen/dp_60"
+            app:layout_constraintTop_toBottomOf="@+id/tv_site_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@mipmap/bg_next_site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_next_site_name"
+                android:id="@+id/tv_next_site_label"
+                android:letterSpacing="0.1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="下一站:"
+                android:textSize="@dimen/sp_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_next_site_name"
+                app:layout_constraintTop_toTopOf="@+id/tv_next_site_label"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_next_site_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_next_site_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:letterSpacing="0.1"
+                android:gravity="center_vertical|start"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_30"
+                app:layout_constraintWidth_default="wrap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_tips"
+            app:layout_constraintBottom_toTopOf="@+id/tv_tips"
+            app:layout_constraintEnd_toEndOf="@+id/tv_tips"
+            android:src="@mipmap/icon_get_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:letterSpacing="0.1"
+            android:textSize="@dimen/sp_30"
+            android:textStyle="bold"
+            app:layout_constraintVertical_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="请您携带好随身的物品从后门下车"
+            android:textColor="@color/color_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintVertical_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.1"
+            android:letterSpacing="0.1"
+            android:textSize="@dimen/sp_30"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="重庆公交温馨提醒您："
+            android:textColor="#323232"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_responsive"
+            android:visibility="gone"
+            android:layout_margin="@dimen/dp_20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@mipmap/icon_responsive_site"
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintHeight_percent="0.3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

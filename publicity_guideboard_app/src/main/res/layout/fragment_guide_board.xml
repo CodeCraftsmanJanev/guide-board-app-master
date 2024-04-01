@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_start_end"
+            app:cardCornerRadius="@dimen/dp_20"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_start_label"
+                    android:textColor="#ea9518"
+                    android:text="起点站"
+                    android:textSize="@dimen/sp_36"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/iv_arrow"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_arrow"
+                    app:layout_constraintBottom_toTopOf="@+id/iv_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:src="@mipmap/icon_arrow"
+                    android:id="@+id/iv_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.06"
+                    android:layout_width="wrap_content"
+                    android:scaleType="fitXY"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textColor="#ea9518"
+                    android:text="终点站"
+                    android:id="@+id/tv_end_label"
+                    android:textSize="@dimen/sp_36"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_arrow"
+                    app:layout_constraintStart_toStartOf="@+id/iv_arrow"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="起点站"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@+id/tv_start_label"
+                    app:layout_constraintStart_toEndOf="@+id/tv_start_label"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_start_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="@dimen/sp_36"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:textColor="@color/black"
+                    android:id="@+id/tv_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="终点站"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@+id/tv_end_label"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_end_label"
+                    app:layout_constraintStart_toEndOf="@+id/tv_end_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="@dimen/sp_36"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:textColor="@color/black"
+                    android:id="@+id/tv_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_broad"
+            app:cardCornerRadius="@dimen/dp_20"
+            app:layout_constraintTop_toBottomOf="@+id/cv_start_end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:padding="@dimen/dp_10"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    app:cardBackgroundColor="#0000ff"
+                    android:id="@+id/cv_line_name"
+                    app:layout_constraintCircleRadius="@dimen/dp_6"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:paddingStart="@dimen/dp_10"
+                        android:paddingEnd="@dimen/dp_10"
+                        android:id="@+id/tv_line_name"
+                        android:text="000路"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_58"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:src="@mipmap/icon_left"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="@+id/tv_in_out"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_in_out"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_in_out"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:id="@+id/tv_in_out"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:textSize="@dimen/sp_36"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_line_name"
+                    app:layout_constraintStart_toStartOf="@+id/cv_line_name"
+                    app:layout_constraintEnd_toEndOf="@+id/cv_line_name"
+                    android:text="已到站"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:src="@mipmap/icon_right"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintStart_toEndOf="@+id/tv_in_out"
+                    app:layout_constraintTop_toTopOf="@+id/tv_in_out"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_in_out"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"/>
+
+                <TextView
+                    android:textColor="#0000ff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:id="@+id/tv_site_name"
+                    android:text="中间站"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/sp_50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:id="@+id/tv_next_label"
+                    android:text="下一站："
+                    android:textSize="@dimen/sp_36"
+                    app:layout_constraintTop_toTopOf="@+id/tv_next"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_next"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:text=""
+                    android:id="@+id/tv_next"
+                    android:textSize="@dimen/sp_36"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_next_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

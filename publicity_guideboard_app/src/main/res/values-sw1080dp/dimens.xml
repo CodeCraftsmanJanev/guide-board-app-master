@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    	
+    <dimen name="dp_5">5.0000dp</dimen>
+    	
+    <dimen name="dp_6">6.0000dp</dimen>
+    	
+    <dimen name="dp_10">10.0000dp</dimen>
+    	
+    <dimen name="dp_16">16.0000dp</dimen>
+    	
+    <dimen name="dp_20">20.0000dp</dimen>
+    	
+    <dimen name="sp_30">30.0000sp</dimen>
+    	
+    <dimen name="sp_36">36.0000sp</dimen>
+    	
+    <dimen name="sp_38">38.0000sp</dimen>
+    	
+    <dimen name="sp_40">40.0000sp</dimen>
+    	
+    <dimen name="sp_46">46.0000sp</dimen>
+    	
+    <dimen name="sp_50">50.0000sp</dimen>
+    	
+    <dimen name="sp_52">52.0000sp</dimen>
+    	
+    <dimen name="sp_58">58.0000sp</dimen>
+    	
+    <dimen name="sp_64">64.0000sp</dimen>
+    	
+    <dimen name="sp_72">72.0000sp</dimen>
+    	
+    <dimen name="sp_80">80.0000sp</dimen>
+</resources>
