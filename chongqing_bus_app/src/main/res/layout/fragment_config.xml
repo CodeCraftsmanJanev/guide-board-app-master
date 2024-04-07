@@ -63,6 +63,7 @@
                             android:layout_height="@dimen/dp_80"
                             android:spinnerMode="dropdown"/>
 
+
                         <TextView
                             android:textColor="@color/black"
                             android:textSize="@dimen/sp_26"
@@ -73,6 +74,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
+                        <Spinner
+                            android:id="@+id/sp_another_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp_80"
+                            android:background="@drawable/input_background"
+                            android:spinnerMode="dropdown"
+                            app:layout_constraintTop_toBottomOf="@+id/sp_serport"
+                            app:layout_constraintStart_toStartOf="@id/sp_serport"
+                            app:layout_constraintEnd_toEndOf="@id/sp_serport" />
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_26"
+                            android:text="主副屏："
+                            app:layout_constraintTop_toTopOf="@+id/sp_another_spinner"
+                            app:layout_constraintBottom_toBottomOf="@+id/sp_another_spinner"
+                            app:layout_constraintEnd_toStartOf="@+id/sp_another_spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+
                         <EditText
                             android:inputType="textCapCharacters"
                             android:maxLines="1"
@@ -80,10 +102,10 @@
                             android:paddingStart="@dimen/dp_6"
                             android:layout_marginTop="@dimen/dp_6"
                             android:digits="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                            app:layout_constraintTop_toBottomOf="@+id/sp_serport"
+                            app:layout_constraintTop_toBottomOf="@+id/sp_another_spinner"
                             app:layout_constraintBottom_toTopOf="@+id/edt_auth_number"
-                            app:layout_constraintStart_toStartOf="@+id/sp_serport"
-                            app:layout_constraintEnd_toEndOf="@+id/sp_serport"
+                            app:layout_constraintStart_toStartOf="@+id/sp_another_spinner"
+                            app:layout_constraintEnd_toEndOf="@+id/sp_another_spinner"
                             android:id="@+id/edt_product_number"
                             android:background="@drawable/input_background"
                             android:textSize="@dimen/sp_26"

@@ -50,6 +50,9 @@ public class Cache {
     public interface Key{
         //协议类型
         String AGREEMENT_ORDINAL = "keyAgreementType";
+        //主副屏
+        String zhufuping = "zhufuping";
+
         //收集日志
         String DEBUG = "keyDebug";
         //音量百分比
@@ -139,11 +142,15 @@ public class Cache {
         int MESSAGE_SERIAL = 1;
 
         //        String DEVICE_NUMBER = "220120000002";
-        String DEVICE_NUMBER = "220120001234";
+//        String DEVICE_NUMBER = "220120000001";
+        String DEVICE_NUMBER = "220120000004";
+//        String DEVICE_NUMBER = "220120001234";
 
         boolean DEBUG = true;
 
         int AGREEMENT_ORDINAL = Agreement.CHONGQING_V2.ordinal();
+
+        int zhufuping = ZhuFuEnum.zhu.ordinal();
 
         String DEVICE_ADDRESS = "06";
         int VOLUME_PERCENT = 50;
@@ -177,6 +184,7 @@ public class Cache {
     public static int getInt(String key,int defValue){
         return mmkv.decodeInt(key,defValue);
     }
+
 
     public static int getInt(String key){
         return getInt(key,-1);

@@ -374,9 +374,6 @@ public class MessageUtils {
 
 
 
-
-
-
     /**
      * 终端编号
      * @return

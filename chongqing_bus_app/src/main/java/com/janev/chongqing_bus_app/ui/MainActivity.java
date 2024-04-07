@@ -29,6 +29,7 @@ import com.janev.chongqing_bus_app.databinding.ActivityMainBinding;
 import com.janev.chongqing_bus_app.serial.ChongqingV1Handler;
 import com.janev.chongqing_bus_app.serial.ChongqingV2Handler;
 import com.janev.chongqing_bus_app.serial.SerialPortManager;
+import com.janev.chongqing_bus_app.serial.ZhuFu;
 import com.janev.chongqing_bus_app.system.UiEvent;
 import com.janev.chongqing_bus_app.tcp.TCPLog;
 import com.janev.chongqing_bus_app.tcp.TCPManager;
@@ -77,6 +78,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements U
 
         //启动串口服务
         SerialPortManager.bindService();
+
+        //设置主副屏 zhang
+        ZhuFu.initSerial(this);
 
         //初始化日志服务
         TCPLog.getInstance().init();

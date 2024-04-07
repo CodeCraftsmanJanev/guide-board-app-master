@@ -6,27 +6,19 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.SeekBar;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileIOUtils;
 import com.blankj.utilcode.util.FileUtils;
-import com.blankj.utilcode.util.ToastUtils;
-import com.blankj.utilcode.util.UiMessageUtils;
 import com.janev.chongqing_bus_app.R;
 import com.janev.chongqing_bus_app.alive.KeepAlive;
 import com.janev.chongqing_bus_app.databinding.FragmentConfigBinding;
 import com.janev.chongqing_bus_app.system.Agreement;
 import com.janev.chongqing_bus_app.system.Cache;
-import com.janev.chongqing_bus_app.system.Path;
-import com.janev.chongqing_bus_app.system.UiEvent;
+import com.janev.chongqing_bus_app.system.ZhuFuEnum;
 import com.janev.chongqing_bus_app.tcp.message.MessageUtils;
 
 import java.util.List;
@@ -55,6 +47,8 @@ public class ConfigFragment extends BaseFragment<FragmentConfigBinding>{
     @Override
     protected void initView() {
         int agreementOrdinal = Cache.getInt(Cache.Key.AGREEMENT_ORDINAL, Cache.Default.AGREEMENT_ORDINAL);
+        //  zhang
+        int agreementOrdinal1 = Cache.getInt(Cache.Key.zhufuping, Cache.Default.zhufuping);
         String productNumber = MessageUtils.getProductNumberHex();
         String authNumber = MessageUtils.getAuthNumberHex();
         String deviceNumber = MessageUtils.getDeviceNumber();
@@ -71,6 +65,12 @@ public class ConfigFragment extends BaseFragment<FragmentConfigBinding>{
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(),R.layout.myspiner,strings);
         binding.spSerport.setAdapter(arrayAdapter);
         binding.spSerport.setSelection(agreementOrdinal);
+        //主副屏
+        List<String> list = ZhuFuEnum.toNameList();
+        ArrayAdapter<String> integerArrayAdapter = new ArrayAdapter<>(requireContext(), R.layout.myspiner, list);
+        binding.spAnotherSpinner.setAdapter(integerArrayAdapter);
+        binding.spAnotherSpinner.setSelection(agreementOrdinal1);
+
 
         //音量
         binding.sbVolume.setMax(100);
@@ -236,6 +236,7 @@ public class ConfigFragment extends BaseFragment<FragmentConfigBinding>{
         //保存按钮
         binding.btnConfirm.setOnClickListener(v -> {
             int selectAgreement = binding.spSerport.getSelectedItemPosition();
+            int selectAgreement1 = binding.spAnotherSpinner.getSelectedItemPosition();
             String inputProductNumber = binding.edtProductNumber.getText().toString();
             String inputAuthNumber = binding.edtAuthNumber.getText().toString();
             String inputDeviceNumber = binding.edtDeviceNumber.getText().toString();
@@ -244,6 +245,7 @@ public class ConfigFragment extends BaseFragment<FragmentConfigBinding>{
 
             if(agreementOrdinal == selectAgreement //协议类型
 //                    && isDebug == debug//log未改变
+                    && agreementOrdinal1 == selectAgreement1  //主副屏
                     && isAutoLaunch == autoLaunch//自启未改变
                     && TextUtils.equals(productNumber,inputProductNumber)
                     && TextUtils.equals(authNumber,inputAuthNumber)
@@ -254,6 +256,8 @@ public class ConfigFragment extends BaseFragment<FragmentConfigBinding>{
             }
             //设置协议类型
             Cache.setInt(Cache.Key.AGREEMENT_ORDINAL,selectAgreement);
+            //设置主副屏类型 zhang
+            Cache.setInt(Cache.Key.zhufuping,selectAgreement1);
 
             //设置厂商编码
             if(TextUtils.isEmpty(inputProductNumber)){
@@ -275,7 +279,6 @@ public class ConfigFragment extends BaseFragment<FragmentConfigBinding>{
             } else {
                 MessageUtils.setDeviceNumber(inputDeviceNumber);
             }
-
             //自启开关
             if(FileUtils.isFileExists(KeepAlive.AUTO_LAUNCH_FLAG)){
                 boolean b = FileIOUtils.writeFileFromString(KeepAlive.AUTO_LAUNCH_FLAG, isAutoLaunch ? "1" : "0", false);

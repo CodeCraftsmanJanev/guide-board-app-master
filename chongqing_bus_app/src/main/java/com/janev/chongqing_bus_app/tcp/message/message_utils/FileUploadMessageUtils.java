@@ -329,6 +329,9 @@ public class FileUploadMessageUtils {
         switch (key) {
             case Cache.Key.AGREEMENT_ORDINAL:
                 return "协议类型";
+                // zhang
+            case Cache.Key.zhufuping:
+                return "主副屏";
             case Cache.Key.LINE_INFO:
                 return "线路详情";
             case Cache.Key.LINE_NAME:
@@ -487,6 +490,8 @@ public class FileUploadMessageUtils {
         }
         switch (key) {
             case Cache.Key.AGREEMENT_ORDINAL:
+                //  zhang
+            case Cache.Key.zhufuping:
             case Cache.Key.LINE_INFO:
             case Cache.Key.LINE_NAME:
             case Cache.Key.SITE_LIST_UP:
