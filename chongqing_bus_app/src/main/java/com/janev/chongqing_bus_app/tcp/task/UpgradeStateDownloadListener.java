@@ -1,6 +1,7 @@
 package com.janev.chongqing_bus_app.tcp.task;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.blankj.utilcode.util.FileUtils;
 import com.janev.chongqing_bus_app.tcp.message.UpgradeStateRequest;

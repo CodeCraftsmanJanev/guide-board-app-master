@@ -46,9 +46,12 @@ public class DriverInfoFragment extends BaseFragment<FragmentDriverInfoBinding>{
         String driverStar = Cache.getString(Cache.Key.DRIVER_STAR);
         String driverHead = Cache.getString(Cache.Key.DRIVER_HEAD);
         String complainMobile = Cache.getString(Cache.Key.COMPLAIN_MOBILE);
-
         if(!TextUtils.isEmpty(driverHead)){
-            DriverInfoManager.getInstance().loadImage(requireContext(),driverHead,binding.ivHead);
+            try {
+                DriverInfoManager.getInstance().loadImage(requireContext(),driverHead,binding.ivHead);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         binding.edtName.setText(driverName);
         binding.edtNumber.setText(driverCode);

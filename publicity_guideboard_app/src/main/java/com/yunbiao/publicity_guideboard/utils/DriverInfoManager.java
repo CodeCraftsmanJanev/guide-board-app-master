@@ -2,7 +2,9 @@ package com.yunbiao.publicity_guideboard.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -34,6 +36,10 @@ import java.io.File;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -148,18 +154,172 @@ public class DriverInfoManager implements LifecycleObserver {
         }
     }
 
-    public void loadImage(Context context,String url, ImageView imageView){
-        if(imageView == null){
-            return;
-        }
-        if(TextUtils.isEmpty(url)){
+//      public void loadImage(Context context,String url, ImageView imageView){
+//          if(imageView == null){
+//              return;
+//          }
+//          if(TextUtils.isEmpty(url)){
+//              return;
+//          }
+//
+//          Consumer<File> fileConsumer = file -> Glide.with(context).asBitmap().load(file).into(imageView);
+//          Consumer<Throwable> throwableConsumer = throwable -> {
+//          };
+//          Action completeAction = () -> {};
+//
+//          File destFile = new File(Path.getHeadPath(), FileUtils.getFileName(url));
+//          if (FileUtils.isFileExists(destFile)) {
+//              d("头像已存在，不下载");
+//              try {
+//                  fileConsumer.accept(destFile);
+//              } catch (Exception e) {
+//                  e.printStackTrace();
+//              }
+//              return;
+//          }
+//
+//          mImageUrl = url;
+//          cancelImage();
+//          imageDisposable = OkGo.<File>get(url).tag(url)
+//                  .converter(new FileConvert())
+//                  .adapt(new ObservableResponse<>())
+//                  .flatMap((Function<Response<File>, ObservableSource<File>>) fileResponse -> {
+//                      if(!fileResponse.isSuccessful()){
+//                          return Observable.error(new Exception("bitmap load failed"));
+//                      }
+//                      File srcFile = fileResponse.body();
+//                      if (!FileUtils.move(srcFile,destFile)) {
+//                          return Observable.error(new Exception("move image failed"));
+//                      }
+//                      return Observable.just(srcFile);
+//                  })
+//                  .retryWhen(RetryWithDelay.defaultDelay(TAG,url))
+//                  .subscribeOn(Schedulers.io())
+//                  .observeOn(AndroidSchedulers.mainThread())
+//                  .doOnSubscribe(disposable -> {
+//                      boolean b = FileUtils.deleteAllInDir(Path.getHeadPath());
+//                      imageView.setImageBitmap(null);
+//                      d("开始下载头像，删除旧头像：" + b);
+//                  })
+//                  .subscribe(fileConsumer, throwableConsumer, completeAction);
+//      }
+
+    public void loadImage(Context context, String url, ImageView imageView) throws Exception {
+        String result = null;
+        if (imageView == null || TextUtils.isEmpty(url)) {
             return;
         }
 
+
+
+        // 截取文件信息，获取文件名
+        String originalUrl = url;
+
+// 找到"/attachFiles/"字符串的索引位置
+        int index = originalUrl.indexOf("/attachFiles/");
+        if (index != -1) {
+            // 使用substring方法截取"/attachFiles/"之后的部分
+            result = originalUrl.substring(index + "/attachFiles/".length());
+            System.out.println(result);
+        } else {
+            System.out.println("未找到指定字符串");
+        }
+
+
+//        http://221.10.114.137:5012/joffice/datapush/downImagePhotoDown.do?path=2hISkvLvmPdBfuObjCH5Wi6kavNydfyxq7lrep8YCCW22y+6BHvQcTY1gXSpxFBQWyPFkSMWyJAxEY1RU3be3A==
+
+
+
+        e(result);
+        // 截取文件信息，获取文件名
+//        String fileName = url.substring(url.lastIndexOf("/") + 1);
+//        e(fileName);
+
+        // 使用AES加密算法CBC模式加密文件名
+        String encryptedFileName = Encrypt(result,"w5k5s6djsk552s5f");
+
+        // 构建加密后的URL
+        String encryptedUrl = "http://221.10.114.137:5012/joffice/datapush/downImagePhotoDown.do?path=" + encryptedFileName;
+
+        Log.e(TAG, encryptedUrl);
+
+        // 调用接口获取文件
+        loadFile(context, encryptedUrl, imageView);
+    }
+
+
+    // 加密文件名
+//    private String encryptFileName(String fileName) {
+//        String encodedText = null;
+//        try {
+//            // 密钥
+//            String key = "w5k5s6djsk552s5f";
+//            byte[] keyBytes = key.getBytes("utf-8");
+//            // 偏移向量
+//            String iv = "lkdskf1ds131fsad";
+//            IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes("utf-8"));
+//
+//            String text = fileName;
+//
+//            SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+//            // AES加密/CBC模式/PKCS5Padding填充方式（默认）
+//            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+//            // 初始化
+//            cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParameterSpec);
+//            byte[] encData = cipher.doFinal(text.getBytes("utf-8"));
+//
+//            // base64
+//            Base64.Encoder encoder = null;
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                encoder = Base64.getEncoder();
+//            }
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                encodedText = encoder.encodeToString(encData);
+//            }
+//
+//            // 添加日志输出
+//            Log.d(TAG, "Encoded Text: " + encodedText);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            // 添加异常日志输出
+//            Log.e(TAG, "Error encrypting file name: " + e.getMessage());
+//        }
+//        return encodedText;
+//    }
+    public static String Encrypt(String sSrc, String sKey) throws Exception {
+        if (sKey == null) {
+            System.out.print("Key为空null");
+            return null;
+        }
+        // 判断Key是否为16位
+        if (sKey.length() != 16) {
+            System.out.print("Key长度不是16位");
+            return null;
+        }
+        byte[] raw = sKey.getBytes("utf-8");
+        SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");//"算法/模式/补码方式"
+
+        // 使用随机生成的初始向量
+        String ivBytes = "lkdskf1ds131fsad";
+        IvParameterSpec iv = new IvParameterSpec(ivBytes.getBytes("UTF-8"));
+
+        cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
+        byte[] encrypted = cipher.doFinal(sSrc.getBytes());
+
+        // 使用Base64类的静态方法进行编码
+        return android.util.Base64.encodeToString(encrypted, Base64.DEFAULT);
+    }
+
+    // 调用接口获取文件
+    private void loadFile(Context context, String url, ImageView imageView) {
         Consumer<File> fileConsumer = file -> Glide.with(context).asBitmap().load(file).into(imageView);
-        Consumer<Throwable> throwableConsumer = throwable -> {};
-        Action completeAction = () -> {};
-
+        Consumer<Throwable> throwableConsumer = throwable -> {
+            // 在发生错误时的处理逻辑，您可以根据需要进行处理
+        };
+        Action completeAction = () -> {
+            // 在图片加载完成时的处理逻辑，您可以根据需要进行处理
+        };
         File destFile = new File(Path.getHeadPath(), FileUtils.getFileName(url));
         if (FileUtils.isFileExists(destFile)) {
             d("头像已存在，不下载");
@@ -196,6 +356,11 @@ public class DriverInfoManager implements LifecycleObserver {
                 })
                 .subscribe(fileConsumer, throwableConsumer, completeAction);
     }
+
+
+
+
+
 
     private void d(String log){
         LogUtils.d(TAG,TAG + ":" + log);
